@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .circle{
+            position: relative;
+            height: 200px;
+            width: 200px;
+            
+        }
+        .circle span{
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+        .circle span:nth-child(1){
+            background: rgb(255, 255, 255,0.1);
+            backdrop-filter: blur(10px);
+            border-top: 0.25px solid rgb(255, 255, 255,0.5);
+            border-left: 0.25px solid rgb(255, 255, 255,0.5);
+            z-index: 2;
+        }
+        .circle span:nth-child(2){
+            background: rgb(0, 255, 0);
+            animation: circle 4s ease-in-out infinite;
+        }
+        .circle span:nth-child(3){
+            background: rgb(255, 255, 255,1);
+            animation: square 4s ease-in-out  infinite;
+            border-radius: 0%;
+        }
+        @keyframes circle{
+            0%{
+                transform: translate(-150px,50px) scale(0.4) rotate(0deg); 
+                z-index: -1;
+                border-radius: 50%;
+            }
+            50%{
+                transform: translate(150px,-50px) scale(0.4) rotate(180deg); 
+                z-index: -1;
+                border-radius: 0%;
+            }
+            50.01%{
+                transform: translate(150px,-50px) scale(0.4) rotate(180deg); 
+                z-index: 3;
+                border-radius: 0%;
+            }
+            100%{
+                transform: translate(-150px,50px) scale(0.4) rotate(360deg); 
+                z-index: 3;
+                border-radius: 50%;
+            }
+        }
+        @keyframes square{
+            0%{
+                transform: translate(150px,-50px) scale(0.4) rotate(0deg); 
+                z-index: 3;
+                border-radius: 50%; 
+            }
+            50%{
+                transform: translate(-150px,50px) scale(0.4) rotate(180deg); 
+                z-index: 3;
+                border-radius: 0%;
+                
+            }
+            50.01%{
+                transform: translate(-150px,50px) scale(0.4) rotate(180deg);
+                border-radius: 0%;
+                z-index: -1;
+            }
+            100%{
+                transform: translate(150px,-50px) scale(0.4) rotate(360deg); 
+                z-index: -1;
+                border-radius: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>
